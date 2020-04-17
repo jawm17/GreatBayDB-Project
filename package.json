@@ -9,7 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mysql": "^2.16.0",
-    "inquirer": "^6.5.0"
-  }
+    "a": "^2.1.2",
+    "inquirer": "^6.5.2",
+    "mysql": "^2.18.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jawm17/GreatBayDB-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jawm17/GreatBayDB-Project/issues"
+  },
+  "homepage": "https://github.com/jawm17/GreatBayDB-Project#readme"
 }
