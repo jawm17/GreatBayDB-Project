@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "khanh1988",
+    password: "koikoi42",
     database: "greatbay_db"
 });
 
@@ -15,7 +15,7 @@ connection.connect(function (err) {
     prompuser()
 });
 function prompuser() {
-   
+
     return inquirer
         .prompt({
             type: "list",
@@ -24,19 +24,26 @@ function prompuser() {
             choices: [
                 "list",
                 "bid",
-                "view" ]           
-        }),
-        function(err, res) {
-            if (err) throw err;
-            console.log(res);
-            
-            afterConnection();
-        };
+                "view"]
+        }).then(function (data) {
+            if (data.choices === "list") {
+                postItem();
+            } else if(data.choices === "bid"){
+                bid();
+            }
+            else {
+                displayItems();
+            }
+        });
 }
-function afterConnection() {
-    connection.query("SELECT * FROM items", function(err, res) {
-      if (err) throw err;
-      console.table(res);
-      connection.end();
-    });
-  }
+
+
+function postItem() {
+}
+
+function bid() {
+}
+
+function displayItems(){
+
+}
