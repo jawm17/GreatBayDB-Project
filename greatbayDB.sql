@@ -8,5 +8,6 @@ CREATE TABLE items (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   category VARCHAR(50) NOT NULL,
-  startingBid INT NOT NULL
+  startingBid INT NOT NULL,
+  PRIMARY KEY (id)
 );
