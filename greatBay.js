@@ -90,16 +90,15 @@ function postItem() {
                 `SELECT currentbid FROM items WHERE name = '${data.item}';`,
                 function (err, res) {
                     if (err) throw err;
-                    console.log(res.currentbid);
-                    if(data.bid > res.currentbid){
+                    if(data.bid > res[0].currentbid){
                         connection.query(
-                            "UPDATE items SET ? WHERE ?",
+                            "UPDATE items SET ? WHERE ?",[
                             {
                                 currentBid: data.bid,
                             },
                             {
                                 name: data.item
-                            },
+                            }],
                             function (err, res) {
                                 if (err) throw err;
                                 console.log("Bid placed successfully!");
