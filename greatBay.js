@@ -16,19 +16,19 @@ connection.connect(function (err) {
 });
 
 function promptUser() {
-   inquirer
+    inquirer
         .prompt({
             type: "list",
             message: "what would you like to do?",
             name: "choices",
             choices: [
-                "list",
-                "bid",
-                "view"]
+                "POST",
+                "BID",
+                "View Items"]
         }).then(function (data) {
-            if (data.choices === "list") {
+            if (data.choices === "POST") {
                 postItem();
-            } else if (data.choices === "bid") {
+            } else if (data.choices === "BID") {
                 updateItemBid();
             }
             else {
@@ -72,8 +72,8 @@ function postItem() {
         });
 }
 
-    function updateItemBid() {
-        inquirer
+function updateItemBid() {
+    inquirer
         .prompt([
             {
                 type: "input",
@@ -90,9 +90,9 @@ function postItem() {
                 `SELECT currentbid FROM items WHERE name = '${data.item}';`,
                 function (err, res) {
                     if (err) throw err;
-                    if(data.bid > res[0].currentbid){
+                    if (data.bid > res[0].currentbid) {
                         connection.query(
-                            "UPDATE items SET ? WHERE ?",[
+                            "UPDATE items SET ? WHERE ?", [
                             {
                                 currentBid: data.bid,
                             },
@@ -113,7 +113,7 @@ function postItem() {
                 }
             );
         });
-    }
+}
 
 
 function displayItems() {
